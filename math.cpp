@@ -24,7 +24,7 @@ class CalcExpression
 	vector<stack_data> getSeparate(string& infix);	//做分割
 	string printSeparate(vector<stack_data>& temp);	//表达式输出
 	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//后缀表达式转换
-}
+};
 
 class Problem
 {
@@ -42,7 +42,7 @@ class Problem
 	protected:
 	int maxNum;
 	int minNum;
-}
+};
 
 class Level1 public:Problem
 {
@@ -53,7 +53,7 @@ class Level1 public:Problem
 	vector <int> a;	//运算数
 	vector <char> ope;	//运算符 只含加减法
 	int ans;
-}
+};
 
 class Level2 public:Problem
 {
@@ -64,7 +64,7 @@ class Level2 public:Problem
 	vector <int> a;	//运算数
 	vector <char> ope;	//运算符 含加减乘除
 	int ans;
-}
+};
 
 class Level3 public:Problem
 {
@@ -76,7 +76,7 @@ class Level3 public:Problem
 	vector <bool> isInteger;	//是否为整数
 	vector <char> ope;	//运算符 含加减乘除
 	double ans;
-}
+};
 
 class Server
 {
@@ -91,7 +91,7 @@ class Server
 	int grade;
 	Problem* problem;
 	void getProblemInstance();	//调用getInstance （传入grade） 获取problem实例
-}
+};
 
 class Client	//专门与键盘打交道
 {
@@ -108,10 +108,11 @@ class Client	//专门与键盘打交道
 	int proCnt;	//题目总数
 	int correctFormKeyboarCnt;	//错误题目数
 	Server server;
-}
+};
 
 int main()
 {
     Client client;//实例化client
     client->start();
+    return 0;
 }
