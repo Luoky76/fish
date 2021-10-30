@@ -1,14 +1,6 @@
-CalcExpression *CalcExpression::instance = nullptr;
+CalcExpression* CalcExpression::instance = nullptr;
 
-// ����ջ���ݽṹ��
-struct stack_data
-{
-    char Operator;
-    double Number;
-};
-
-// ��������ж�
-bool isOperator(char ch)
+bool CalcExpression::isOperator(char ch)
 {
     switch (ch)
     {
@@ -22,15 +14,13 @@ bool isOperator(char ch)
     }
 }
 
-//�����ж�
-bool isNumber(char ch)
+bool CalcExpression::isNumber(char ch)
 {
     string number = "0123456789.";
     return number.find(ch) != -1;
 }
 
-//���ȼ��ж�
-int priority(char a)
+int CalcExpression::priority(char a)
 {
     int temp = 0;
     if (a == '*' || a == '/')
@@ -40,8 +30,7 @@ int priority(char a)
     return temp;
 }
 
-//��ȡ����ջ��˫��
-void getTwoNums(stack<double> &num_stack, double &first, double &second)
+void CalcExpression::getTwoNums(stack<double> &num_stack, double &first, double &second)
 {
     second = num_stack.top();
     num_stack.pop();
@@ -50,8 +39,7 @@ void getTwoNums(stack<double> &num_stack, double &first, double &second)
     num_stack.pop();
 }
 
-//�����׺����ʽ
-double postfixCalculate(vector<stack_data> &postfix)
+double CalcExpression::postfixCalculate(vector<stack_data> &postfix)
 {
     double first, second;
     stack<double> num_stack;
@@ -85,8 +73,7 @@ double postfixCalculate(vector<stack_data> &postfix)
     return result;
 }
 
-//���ָ�
-vector<stack_data> getSeparate(string &infix)
+vector<stack_data> CalcExpression::getSeparate(string &infix)
 {
     vector<stack_data> postfix;
     string str_num;
@@ -116,7 +103,6 @@ vector<stack_data> getSeparate(string &infix)
         postfix.emplace_back(stack_data{' ', stod(str_num)});
     str_num = "";
 
-    //ǰ��ȱ��+-���Ų�0
     vector<stack_data> new_postfix;
     char pre_char = '(';
     for (auto p : postfix)
@@ -134,8 +120,7 @@ vector<stack_data> getSeparate(string &infix)
     return new_postfix;
 }
 
-//����ʽ���
-string printSeparate(vector<stack_data> &temp)
+string CalcExpression::printSeparate(vector<stack_data> &temp)
 {
     string out;
     for (auto t : temp)
@@ -149,8 +134,7 @@ string printSeparate(vector<stack_data> &temp)
     return out;
 }
 
-//��׺����ʽת��
-vector<stack_data> getPostfixExp(vector<stack_data> &infix)
+vector<stack_data> CalcExpression::getPostfixExp(vector<stack_data> &infix)
 {
     stack<char> operator_stack;
     vector<stack_data> postfix;
@@ -194,7 +178,7 @@ vector<stack_data> getPostfixExp(vector<stack_data> &infix)
     return postfix;
 }
 
-double CalcExpression ::calc(string expression)
+double CalcExpression::calc(string expression)
 {
     vector<stack_data> postfix = getSeparate(expression);
     vector<stack_data> postfixExp = getPostfixExp(postfix);
@@ -209,7 +193,7 @@ int CalcExpression ::calcOnlyInt(string expression)
     double result = postfixCalculate(postfixExp);
     return (int)result;
 }
-CalcExpression *CalcExpression ::getInstance()
+CalcExpression* CalcExpression ::getInstance()
 {
     return instance;
 }

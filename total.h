@@ -4,6 +4,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+struct stack_data
+{
+	char Operator;
+	double Number;
+};
+
 class CalcExpression
 {
 public:
@@ -14,12 +20,6 @@ public:
 private:
 	static CalcExpression *instance; //���汾���Ψһʵ������ʵ���в�����ʱӦ��Ϊnullptr
 	CalcExpression();				 //���캯��˽�л����������ⲿ����ʵ��������
-
-	struct stack_data // ����ջ���ݽṹ��
-	{
-		char Operator;
-		double Number;
-	};
 	bool isOperator(char ch);												  // ��������ж�
 	bool isNumber(char ch);													  //�����ж�
 	int priority(char a);													  //���ȼ��ж�
@@ -118,13 +118,4 @@ private:
 	int wrongCnt; //������Ŀ��
 	Server server;
 };
-
-#include "calcexpression.cpp"
-#include "client.cpp"
-#include "server.cpp"
-#include "problem.cpp"
-#include "level1.cpp"
-#include "level2.cpp"
-#include "level3.cpp"
-
 #endif
