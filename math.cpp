@@ -3,40 +3,40 @@ using namespace std;
 class CalcExpression
 {
 	public:
-	static CalcExpression* getInstance();	//ä½¿ç”¨æ­¤å‡½æ•°æ¥è·å–æœ¬ç±»çš„å”¯ä¸€å®ä¾‹ 
+	static CalcExpression* getInstance();	//Ê¹ÓÃ´Ëº¯ÊıÀ´»ñÈ¡±¾ÀàµÄÎ¨Ò»ÊµÀı 
 	double calc(string expression);
 	int calcOnlyInt(string expression);
 
 	private:
-	CalcExpression* instance;	//å‚¨å­˜æœ¬ç±»çš„å”¯ä¸€å®ä¾‹ï¼Œå½“å®ä¾‹å°šä¸å­˜åœ¨æ—¶åº”èµ‹ä¸ºnullptr
-	CalcExpression();	//æ„é€ å‡½æ•°ç§æœ‰åŒ–ï¼Œä¸å…è®¸å¤–éƒ¨è‡ªè¡Œå®ä¾‹åŒ–æœ¬ç±» 
+	CalcExpression* instance;	//´¢´æ±¾ÀàµÄÎ¨Ò»ÊµÀı£¬µ±ÊµÀıÉĞ²»´æÔÚÊ±Ó¦¸³Îªnullptr
+	CalcExpression();	//¹¹Ôìº¯ÊıË½ÓĞ»¯£¬²»ÔÊĞíÍâ²¿×ÔĞĞÊµÀı»¯±¾Àà 
 
-	struct stack_data	// å®šä¹‰æ ˆæ•°æ®ç»“æ„ä½“
+	struct stack_data	// ¶¨ÒåÕ»Êı¾İ½á¹¹Ìå
 	{
     	char Operator;
     	double Number;
 	};
-	bool isOperator(char ch);	// è®¡ç®—ç¬¦å·åˆ¤å®š
-	bool isNumber(char ch);	//æ•°å­—åˆ¤å®š
-	int priority(char a);	//ä¼˜å…ˆçº§åˆ¤å®š
-	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//è·å–æ•°å­—æ ˆé¡¶åŒæ•°
-	double postfixCalculate(vector<stack_data>& postfix);	//è®¡ç®—åç¼€è¡¨è¾¾å¼
-	vector<stack_data> getSeparate(string& infix);	//åšåˆ†å‰²
-	string printSeparate(vector<stack_data>& temp);	//è¡¨è¾¾å¼è¾“å‡º
-	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//åç¼€è¡¨è¾¾å¼è½¬æ¢
+	bool isOperator(char ch);	// ¼ÆËã·ûºÅÅĞ¶¨
+	bool isNumber(char ch);	//Êı×ÖÅĞ¶¨
+	int priority(char a);	//ÓÅÏÈ¼¶ÅĞ¶¨
+	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//»ñÈ¡Êı×ÖÕ»¶¥Ë«Êı
+	double postfixCalculate(vector<stack_data>& postfix);	//¼ÆËãºó×º±í´ïÊ½
+	vector<stack_data> getSeparate(string& infix);	//×ö·Ö¸î
+	string printSeparate(vector<stack_data>& temp);	//±í´ïÊ½Êä³ö
+	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//ºó×º±í´ïÊ½×ª»»
 };
 
 class Problem
 {
 	public:
-	const static int lev1 = 1;	//å¯¹åº”Level1
-	const static int lev2 = 2;	//å¯¹åº”Level2
-	const static int lev3 = 3;	//å¯¹åº”Level3
+	const static int lev1 = 1;	//¶ÔÓ¦Level1
+	const static int lev2 = 2;	//¶ÔÓ¦Level2
+	const static int lev3 = 3;	//¶ÔÓ¦Level3
 
-	static Problem* getInstance(int level);	//éšæ ¹æ®å¹´çº§éšæœºç”Ÿæˆé¢˜ç›®å®ä¾‹
-	virtual bool checkAns(string ans) = 0;	//æ¯ä¸ªé¢˜ç›®è‡ªè¡Œåˆ¤æ–­ç­”æ¡ˆæ˜¯å¦æ­£ç¡®
-	void setLim(int low,int high);	//è®¾ç½®ç”Ÿæˆçš„æ•°çš„ä¸Šä¸‹ç•Œ
-	virtual string getPro() = 0;	//è·å–ç”¨stringè¡¨ç¤ºçš„é¢˜ç›®
+	static Problem* getInstance(int level);	//Ëæ¸ù¾İÄê¼¶Ëæ»úÉú³ÉÌâÄ¿ÊµÀı
+	virtual bool checkAns(string ans) = 0;	//Ã¿¸öÌâÄ¿×ÔĞĞÅĞ¶Ï´ğ°¸ÊÇ·ñÕıÈ·
+	void setLim(int low,int high);	//ÉèÖÃÉú³ÉµÄÊıµÄÉÏÏÂ½ç
+	string getPro();	//»ñÈ¡ÓÃstring±íÊ¾µÄÌâÄ¿
 
 	protected:
 	int maxNum;
@@ -46,34 +46,37 @@ class Problem
 class Level1 :public Problem
 {
 	public:
-	Level1();	//æ„é€ å‡½æ•°å†…ç›´æ¥éšæœºç”Ÿæˆé¢˜ç›® æ³¨æ„è®¾ç½®ä¸Šä¸‹ç•Œ
+	Level1();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿ ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	bool checkAns(string ans);
 
 	private:
-	vector <int> a;	//è¿ç®—æ•°
-	vector <char> ope;	//è¿ç®—ç¬¦ åªå«åŠ å‡æ³•
+	vector <int> a;	//ÔËËãÊı
+	vector <char> ope;	//ÔËËã·û Ö»º¬¼Ó¼õ·¨
 	int ans;
 };
 
 class Level2 :public Problem
 {
 	public:
-	Level2();	//æ„é€ å‡½æ•°å†…ç›´æ¥éšæœºç”Ÿæˆé¢˜ç›®  æ³¨æ„è®¾ç½®ä¸Šä¸‹ç•Œ
+	Level2();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿  ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	bool checkAns(string ans);
 
 	private:
-	vector <int> a;	//è¿ç®—æ•°
-	vector <char> ope;	//è¿ç®—ç¬¦ å«åŠ å‡ä¹˜é™¤
+	vector <int> a;	//ÔËËãÊı
+	vector <char> ope;	//ÔËËã·û º¬¼Ó¼õ³Ë³ı
 	int ans;
 };
 
 class Level3 :public Problem
 {
 	public:
-	Level3();	//æ„é€ å‡½æ•°å†…ç›´æ¥éšæœºç”Ÿæˆé¢˜ç›®  æ³¨æ„è®¾ç½®ä¸Šä¸‹ç•Œ
+	Level3();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿  ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	bool checkAns(string ans);
 
 	private:
-	vector <double> a;	//è¿ç®—æ•° å«å°æ•°
-	vector <bool> isInteger;	//æ˜¯å¦ä¸ºæ•´æ•°
-	vector <char> ope;	//è¿ç®—ç¬¦ å«åŠ å‡ä¹˜é™¤
+	vector <double> a;	//ÔËËãÊı º¬Ğ¡Êı
+	vector <bool> isInteger;	//ÊÇ·ñÎªÕûÊı
+	vector <char> ope;	//ÔËËã·û º¬¼Ó¼õ³Ë³ı
 	double ans;
 };
 
@@ -83,35 +86,35 @@ class Server
 	Server();
 	~Server();
 	void setGrade(int newGrade);
-	bool check(string ans);	//åˆ¤æ–­ç­”æ¡ˆæ˜¯å¦æ­£ç¡®
-	string getProblem();	//è°ƒç”¨é—®é¢˜çš„ getPro
+	bool check(string ans);	//ÅĞ¶Ï´ğ°¸ÊÇ·ñÕıÈ·
+	string getProblem();	//µ÷ÓÃÎÊÌâµÄ getPro
 
 	private:
 	int grade;
 	Problem* problem;
-	void getProblemInstance();	//è°ƒç”¨getInstance ï¼ˆä¼ å…¥gradeï¼‰ è·å–problemå®ä¾‹
+	void getProblemInstance();	//µ÷ÓÃgetInstance £¨´«Èëgrade£© »ñÈ¡problemÊµÀı
 };
 
-class Client	//ä¸“é—¨ä¸é”®ç›˜æ‰“äº¤é“
+class Client	//×¨ÃÅÓë¼üÅÌ´ò½»µÀ
 {
 	public:
 	Client();
-	void getGradeFromKeyboard();	//ä»é”®ç›˜è¯»å…¥å¹´çº§ ï¼ˆå®Œæˆä¸­æ–‡ç¿»è¯‘ï¼‰ åä¼ ç»™Server
-	void printProblem();	//åœ¨å±å¹•ä¸Šæ‰“å°é¢˜ç›®
-	string getAnsFormKeyboard();	//ä»é”®ç›˜è¯»å–ç­”æ¡ˆ
-	int getProCntFormKeyboard();	//è·å–é¢˜ç›®æ•°é‡
-	void printEndofPro();	//æ‰“å°é¢˜ç›®ç»“æŸçš„æç¤ºï¼ˆå…¨éƒ¨æ­£ç¡®/æœ‰å¤šå°‘é”™è¯¯ï¼‰
+	void getGradeFromKeyboard();	//´Ó¼üÅÌ¶ÁÈëÄê¼¶ £¨Íê³ÉÖĞÎÄ·­Òë£© ºó´«¸øServer
+	void printProblem();	//ÔÚÆÁÄ»ÉÏ´òÓ¡ÌâÄ¿
+	string getAnsFormKeyboard();	//´Ó¼üÅÌ¶ÁÈ¡´ğ°¸
+	int getProCntFormKeyboard();	//»ñÈ¡ÌâÄ¿ÊıÁ¿
+	void printEndofPro();	//´òÓ¡ÌâÄ¿½áÊøµÄÌáÊ¾£¨È«²¿ÕıÈ·/ÓĞ¶àÉÙ´íÎó£©
 	void start();
 
 	private:
-	int proCnt;	//é¢˜ç›®æ€»æ•°
-	int wrongCnt;	//é”™è¯¯é¢˜ç›®æ•°
+	int proCnt;	//ÌâÄ¿×ÜÊı
+	int correctFormKeyboarCnt;	//´íÎóÌâÄ¿Êı
 	Server server;
 };
 
 int main()
 {
-    Client client;	//å®ä¾‹åŒ–client
+    Client client;//ÊµÀı»¯client
     client.start();
     return 0;
 }
