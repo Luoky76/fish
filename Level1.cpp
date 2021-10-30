@@ -7,7 +7,7 @@ Level2::Level2()
     int x = rand() % 9 + 2;
     while (x--)
     {
-        a.push_back(rand()%101);
+        a.push_back(rand()%(maxNum+1));
         if (!x)
             ope.push_back(opt[rand() % 4]);
     }

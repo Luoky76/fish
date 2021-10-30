@@ -7,7 +7,7 @@ Level3::Level3()
     int x = rand();
     while (x--)
     {
-        a.push_back((rand()%1000001) / (100.0));
+        a.push_back((rand()%(maxNum*100+1)) / (100.0));
         if (!x)
             ope.push_back(opt[rand() % 4]);
     }
