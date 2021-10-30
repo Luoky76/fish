@@ -1,4 +1,3 @@
-
 Server::Server()
 { 
 
@@ -8,13 +7,13 @@ void Server::setGrade(int newGrade)
     this.grade = newGrade;
 	getProblemInstance();
 }
-bool Server::check(string ans) //ÅÐ¶Ï´ð°¸ÊÇ·ñÕýÈ·
+bool Server::check(string ans) //ï¿½Ð¶Ï´ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·
 {
 	return problem->checkAns(ans);		
 }
 string Server::getProblem()
 {
-	return problem->getPro();  //µ÷ÓÃÎÊÌâµÄ getPro
+	return problem->getPro();  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPro
 }	
 void Server::getProblemInstance()
 {

@@ -1,8 +1,8 @@
-#include <exception>
-#include <iomanip>
+CalcExpression *CalcExpression::instance = nullptr;
 
 // ����ջ���ݽṹ��
-struct stack_data {
+struct stack_data
+{
     char Operator;
     double Number;
 };
@@ -29,9 +29,9 @@ bool isNumber(char ch)
     return number.find(ch) != -1;
 }
 
-
 //���ȼ��ж�
-int priority(char a) {
+int priority(char a)
+{
     int temp = 0;
     if (a == '*' || a == '/')
         temp = 1;
@@ -41,7 +41,7 @@ int priority(char a) {
 }
 
 //��ȡ����ջ��˫��
-void getTwoNums(stack<double>& num_stack, double& first, double& second)
+void getTwoNums(stack<double> &num_stack, double &first, double &second)
 {
     second = num_stack.top();
     num_stack.pop();
@@ -51,7 +51,7 @@ void getTwoNums(stack<double>& num_stack, double& first, double& second)
 }
 
 //�����׺����ʽ
-double postfixCalculate(vector<stack_data>& postfix)
+double postfixCalculate(vector<stack_data> &postfix)
 {
     double first, second;
     stack<double> num_stack;
@@ -86,7 +86,7 @@ double postfixCalculate(vector<stack_data>& postfix)
 }
 
 //���ָ�
-vector<stack_data> getSeparate(string& infix)
+vector<stack_data> getSeparate(string &infix)
 {
     vector<stack_data> postfix;
     string str_num;
@@ -94,9 +94,10 @@ vector<stack_data> getSeparate(string& infix)
     {
         if (isOperator(p))
         {
-            if (!str_num.empty()) postfix.emplace_back(stack_data{ ' ', stod(str_num) });
+            if (!str_num.empty())
+                postfix.emplace_back(stack_data{' ', stod(str_num)});
             str_num = "";
-            postfix.emplace_back(stack_data{ p, 0 });
+            postfix.emplace_back(stack_data{p, 0});
         }
 
         else if (isNumber(p))
@@ -105,12 +106,14 @@ vector<stack_data> getSeparate(string& infix)
         }
         else if (p == '(' or p == ')')
         {
-            if (!str_num.empty()) postfix.emplace_back(stack_data{ ' ', stod(str_num) });
+            if (!str_num.empty())
+                postfix.emplace_back(stack_data{' ', stod(str_num)});
             str_num = "";
-            postfix.emplace_back(stack_data{ p, 0 });
+            postfix.emplace_back(stack_data{p, 0});
         }
     }
-    if (!str_num.empty())  postfix.emplace_back(stack_data{ ' ', stod(str_num) });
+    if (!str_num.empty())
+        postfix.emplace_back(stack_data{' ', stod(str_num)});
     str_num = "";
 
     //ǰ��ȱ��+-���Ų�0
@@ -118,18 +121,21 @@ vector<stack_data> getSeparate(string& infix)
     char pre_char = '(';
     for (auto p : postfix)
     {
-        if (p.Operator != ' ') {
-            if (pre_char == '(' and (p.Operator == '-' or p.Operator == '+')) new_postfix.emplace_back(stack_data{ ' ', 0 });
+        if (p.Operator != ' ')
+        {
+            if (pre_char == '(' and (p.Operator == '-' or p.Operator == '+'))
+                new_postfix.emplace_back(stack_data{' ', 0});
             pre_char = p.Operator;
         }
-        else pre_char = ' ';
+        else
+            pre_char = ' ';
         new_postfix.emplace_back(p);
     }
     return new_postfix;
 }
 
 //����ʽ���
-string printSeparate(vector<stack_data>& temp)
+string printSeparate(vector<stack_data> &temp)
 {
     string out;
     for (auto t : temp)
@@ -144,7 +150,7 @@ string printSeparate(vector<stack_data>& temp)
 }
 
 //��׺����ʽת��
-vector<stack_data> getPostfixExp(vector<stack_data>& infix)
+vector<stack_data> getPostfixExp(vector<stack_data> &infix)
 {
     stack<char> operator_stack;
     vector<stack_data> postfix;
@@ -157,7 +163,7 @@ vector<stack_data> getPostfixExp(vector<stack_data>& infix)
                 isOperator(operator_stack.top()) and
                 priority(operator_stack.top()) >= priority(p.Operator))
             {
-                postfix.emplace_back(stack_data{ operator_stack.top(), 0 });
+                postfix.emplace_back(stack_data{operator_stack.top(), 0});
                 operator_stack.pop();
             }
             operator_stack.push(p.Operator);
@@ -170,7 +176,7 @@ vector<stack_data> getPostfixExp(vector<stack_data>& infix)
         {
             while (operator_stack.top() != '(')
             {
-                postfix.push_back(stack_data{ operator_stack.top() });
+                postfix.push_back(stack_data{operator_stack.top()});
                 operator_stack.pop();
             }
             operator_stack.pop();
@@ -179,33 +185,31 @@ vector<stack_data> getPostfixExp(vector<stack_data>& infix)
         {
             postfix.push_back(p);
         }
-
     }
     while (!operator_stack.empty())
     {
-        postfix.push_back(stack_data{ operator_stack.top(), 0 });
+        postfix.push_back(stack_data{operator_stack.top(), 0});
         operator_stack.pop();
     }
     return postfix;
 }
 
-double CalcExpression :: calc(string expression)
+double CalcExpression ::calc(string expression)
 {
-	vector<stack_data> postfix = getSeparate(expression);
-    vector<stack_data> postfixExp = getPostfixExp(postfix);	
+    vector<stack_data> postfix = getSeparate(expression);
+    vector<stack_data> postfixExp = getPostfixExp(postfix);
     double result = postfixCalculate(postfixExp);
     return result;
 }
 
-int CalcExpression :: calcOnlyInt(string expression)
+int CalcExpression ::calcOnlyInt(string expression)
 {
-	vector<stack_data> postfix = getSeparate(expression);
-    vector<stack_data> postfixExp = getPostfixExp(postfix);	
+    vector<stack_data> postfix = getSeparate(expression);
+    vector<stack_data> postfixExp = getPostfixExp(postfix);
     double result = postfixCalculate(postfixExp);
     return (int)result;
 }
-CalcExpression*CalcExpression :: getInstance()
+CalcExpression *CalcExpression ::getInstance()
 {
-	return this->instance; 
-} 
-
+    return instance;
+}

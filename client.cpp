@@ -14,10 +14,10 @@ void Client::getGradeFromKeyboard(){
 }
 
 void Client::printProblem() {
-    std::cout<<server.getproblem()<<"=?"<<std::endl;
+    std::cout<<server.getProblem()<<"=?"<<std::endl;
 }
 
-string Client::getAnsFormKeyboard() {
+string Client::getAnsFromKeyboard() {
     string ans;
     std::cin>>ans;
     return ans;
