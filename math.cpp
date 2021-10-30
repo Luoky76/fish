@@ -44,7 +44,7 @@ class Problem
 	int minNum;
 };
 
-class Level1 public:Problem
+class Level1 :public Problem
 {
 	public:
 	Level1();	//构造函数内直接随机生成题目 注意设置上下界
@@ -55,7 +55,7 @@ class Level1 public:Problem
 	int ans;
 };
 
-class Level2 public:Problem
+class Level2 :public Problem
 {
 	public:
 	Level2();	//构造函数内直接随机生成题目  注意设置上下界
@@ -66,7 +66,7 @@ class Level2 public:Problem
 	int ans;
 };
 
-class Level3 public:Problem
+class Level3 :public Problem
 {
 	public:
 	Level3();	//构造函数内直接随机生成题目  注意设置上下界
