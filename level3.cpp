@@ -1,25 +1,25 @@
 Level3::Level3()
 { 
 	srand(time(0)); 
-	int geshu=(rand()%3)+2;               //Éú³ÉNµÄ¸öÊı (2-4)
+	int geshu=(rand()%3)+2;               //ç”ŸæˆNçš„ä¸ªæ•° (2-4)
 	char symbol[4]={'+','-','*','/'};  
 	for(int i=0;i<geshu-1;i++)   
 	{
-		//·ûºÅµÄËæ»úÉú³É
+		//ç¬¦å·çš„éšæœºç”Ÿæˆ
 		int openum=rand()%4;
 		ope.push_back(symbol[openum]);
 	}
    
 	for(int i=0;i<geshu;i++)
 	{ 
-		int randnum=rand()%1000001;   //·¶Î§ÔÚ[0,10000] 
-		int num=rand()%2;       //ÅĞ¶ÏaµÄËæ»úÊıÊÇÕûÊı»¹ÊÇĞ¡Êı
-		if(num==0)              //ÕûÊı
+		int randnum=rand()%1000001;   //èŒƒå›´åœ¨[0,10000] 
+		int num=rand()%2;       //åˆ¤æ–­açš„éšæœºæ•°æ˜¯æ•´æ•°è¿˜æ˜¯å°æ•°
+		if(num==0)              //æ•´æ•°
 		{ 
 			int b=randnum/100;
 			a.push_back(b); 
 		}
-		else                    //Ğ¡Êı
+		else                    //å°æ•°
 		{
 			double randnum1=randnum/100.00;
  			a.push_back(randnum1);
@@ -36,10 +36,10 @@ Level3::Level3()
  }
 string Level3::getPro()
 {
-	int cnta = a.size();   //Êı×Ö¸öÊı
-	int cnto = ope.size(); //²Ù×÷·û¸öÊı
-	int x = 0;             //µ±Ç°Êı×ÖÊı×éÎ»ÖÃ
-	int y = 0;             //µ±Ç°·ûºÅÊı×éÎ»ÖÃ
+	int cnta = a.size();   //æ•°å­—ä¸ªæ•°
+	int cnto = ope.size(); //æ“ä½œç¬¦ä¸ªæ•°
+	int x = 0;             //å½“å‰æ•°å­—æ•°ç»„ä½ç½®
+	int y = 0;             //å½“å‰ç¬¦å·æ•°ç»„ä½ç½®
 	string Pro = "";
 	while (x < cnta || y < cnto)
 	{
