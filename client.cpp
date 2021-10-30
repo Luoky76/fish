@@ -17,9 +17,12 @@ void Client::getGradeFromKeyboard()
     }
     server.setGrade(level);
 }
-void Client::initProblem(){
+
+void Client::initProblem()
+{
     server.getProblemInstance();
 }
+
 void Client::printProblem()
 {
     std::cout << server.getProblemStr() << "=?" << std::endl;

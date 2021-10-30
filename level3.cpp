@@ -26,6 +26,7 @@ Level3::Level3()
 		}
 	}
 }
+
 bool Level3::checkAns(string ans)
 {
 	CalcExpression *c = CalcExpression::getInstance();
@@ -36,6 +37,7 @@ bool Level3::checkAns(string ans)
 	else
 		return false;
 }
+
 string Level3::getPro()
 {
 	int cnta = a.size();   //数字个数

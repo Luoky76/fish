@@ -1,4 +1,4 @@
-CalcExpression* CalcExpression::instance = nullptr;
+CalcExpression *CalcExpression::instance = nullptr;
 
 bool CalcExpression::isOperator(char ch)
 {
@@ -193,7 +193,7 @@ int CalcExpression ::calcOnlyInt(string expression)
     double result = postfixCalculate(postfixExp);
     return (int)result;
 }
-CalcExpression* CalcExpression ::getInstance()
+CalcExpression *CalcExpression ::getInstance()
 {
     return instance;
 }

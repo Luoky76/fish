@@ -17,7 +17,7 @@ Level1::Level1()
 
 bool Level1::checkAns(string ans)
 {
-	CalcExpression* c=CalcExpression::getInstance();
+	CalcExpression *c = CalcExpression::getInstance();
 	string s = this->getPro();
 	double a = stod(ans);
 	if (a == c->calc(s))
