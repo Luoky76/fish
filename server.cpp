@@ -9,7 +9,7 @@ bool Server::check(string ans) //�жϴ��Ƿ���ȷ
 {
 	return problem->checkAns(ans);
 }
-string Server::getProblem()
+string Server::getProblemStr()
 {
 	return problem->getPro(); //��������� getPro
 }

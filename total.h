@@ -94,7 +94,7 @@ public:
 	~Server();
 	void setGrade(int newGrade);
 	bool check(string ans); //�жϴ��Ƿ���ȷ
-	string getProblem();	//��������� getPro
+	string getProblemStr();	//��������� getPro
 	void getProblemInstance(); //����getInstance ������grade�� ��ȡproblemʵ��
 private:
 	int grade;
@@ -111,7 +111,7 @@ public:
 	string getAnsFromKeyboard(); //�Ӽ��̶�ȡ��
 	int getProCntFromKeyboard(); //��ȡ��Ŀ����
 	void printEndofPro();		 //��ӡ��Ŀ��������ʾ��ȫ����ȷ/�ж��ٴ���
-	void start();
+	void run();
 
 private:
 	int level;

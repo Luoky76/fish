@@ -10,6 +10,6 @@
 int main()
 {
     Client client;
-    client.start();
+    client.run();
     return 0;
 }

@@ -22,7 +22,7 @@ void Client::initProblem(){
 }
 void Client::printProblem()
 {
-    std::cout << server.getProblem() << "=?" << std::endl;
+    std::cout << server.getProblemStr() << "=?" << std::endl;
 }
 
 string Client::getAnsFromKeyboard()
@@ -53,11 +53,11 @@ void Client::printEndofPro()
 
 Client::Client()
 {
-    int proCnt = 0;
-    int wrongCnt = 0;
+    proCnt = 0;
+    wrongCnt = 0;
 }
 
-void Client::start()
+void Client::run()
 {
     int i;
     getGradeFromKeyboard();
