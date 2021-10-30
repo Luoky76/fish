@@ -69,11 +69,13 @@ class Server
 class Client	//专门与键盘打交道 
 {
 	public:
+	Client();
 	void getGradeFromKeyboard();	//从键盘读入年级 （完成中文翻译） 后传给Server 
 	void printProblem();	//在屏幕上打印题目 
 	string getAnsFormKeyboard();	//从键盘读取答案 
 	int getProCntFormKeyboard();	//获取题目数量 
 	void printEndofPro();	//打印题目结束的提示（全部正确/有多少错误） 
+	void start();
 	
 	private:
 	int proCnt;	//题目总数 
