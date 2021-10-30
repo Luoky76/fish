@@ -20,4 +20,8 @@ void Server::getProblemInstance()
 {
     problem = Problem::getInstance(grade);
 }
-	
+
+Server::~Server()
+{
+	delete problem;
+}	
