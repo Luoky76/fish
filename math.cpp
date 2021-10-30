@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+using namespace std;
 class CalcExpression
 {
 	public:
@@ -29,9 +29,9 @@ class CalcExpression
 class Problem
 {
 	public:
-	static int lev1 = 1;	//对应Level1
-	static int lev2 = 2;	//对应Level2
-	static int lev3 = 3;	//对应Level3
+	const static int lev1 = 1;	//对应Level1
+	const static int lev2 = 2;	//对应Level2
+	const static int lev3 = 3;	//对应Level3
 
 	static Problem* getInstance(int level);	//随根据年级随机生成题目实例
 	int getAns();
