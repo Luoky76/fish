@@ -1,9 +1,11 @@
 #include "math.cpp"
 
-Level2::Level2()
+Level1::Level1()
 {
     char opt[4] = {'+', '-', '*', '//'};
     srand(time(0));
+    setLim(0,100);
+
     int x = rand() % 9 + 2;
     while (x--)
     {

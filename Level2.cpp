@@ -4,6 +4,8 @@ Level2::Level2()
 {
     char opt[4] = {'+', '-', '*', '//'};
     srand(time(0));
+    setLim(0,10000);
+
     int x = rand() % 9 + 2;
     while (x--)
     {
