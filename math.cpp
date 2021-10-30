@@ -105,7 +105,7 @@ class Client	//专门与键盘打交道
 
 	private:
 	int proCnt;	//题目总数
-	int correctFormKeyboarCnt;	//错误题目数
+	int wrongCnt;	//错误题目数
 	Server server;
 };
 
