@@ -10,7 +10,7 @@ void Server::setGrade(int newGrade)
 }
 bool Server::check(string ans) //判断答案是否正确
 {
-	return problem->checkAns();		
+	return problem->checkAns(ans);		
 }
 string Server::getProblem()
 {
@@ -20,4 +20,8 @@ void Server::getProblemInstance()
 {
     problem = Problem::getInstance(grade);
 }
-	
+
+Server::~Server()
+{
+	delete problem;
+}	
