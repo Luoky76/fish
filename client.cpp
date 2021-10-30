@@ -35,6 +35,7 @@ int Client::getProCntFromKeyboard()
 {
     std::cout << "请输入题目数？" << std::endl;
     std::cin >> proCnt;
+    return proCnt;
 }
 
 void Client::printEndofPro()
@@ -64,7 +65,7 @@ void Client::start()
     for (i = 0; i < proCnt; i++)
     {
         printProblem();
-        if (!server.check(getAnsFormKeyboard()))
+        if (!server.check(getAnsFromKeyboard()))
         {
             wrongCnt++;
         }

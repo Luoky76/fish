@@ -1,16 +1,17 @@
 Problem *Problem::getInstance(int level)
 {
+	Problem *Pro = nullptr;
 	if (level == 1)
 	{
-		Problem Pro = new Level1;
+		Pro = new Level1;
 	}
 	else if (level == 2)
 	{
-		Problem Pro = new Level2;
+		Pro = new Level2;
 	}
 	else if (level == 3)
 	{
-		Problem Pro = new Level3;
+		Pro = new Level3;
 	}
 	return Pro;
 }

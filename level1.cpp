@@ -1,58 +1,39 @@
 Level1::Level1()
 {
-	int cnt, flag = 1;
-	vector<char> c;
-	cnt = rand() % 9 + 2;
-	int kuo;
-	kuo = rand() % 7;
-	if (kuo + 3 > cnt)
-		kuo = -1;
-	for (int i = 1; i <= cnt; i++)
-	{
-		int num;
-		num = rand() % 101;
-		a.push_back(num);
+	srand(time(0));
+	int geshu = (rand() % 3) + 2; //����N�ĸ��� (2-4)
+	char symbol[4] = {'+', '-'};
+	for (int i = 0; i < geshu - 1; i++)
+	{ //���ŵ��������
+		int openum = rand() % 2;
+		ope.push_back(symbol[openum]);
 	}
-	for (int i = 1; i < cnt; i++)
+
+	for (int i = 0; i < geshu; i++)
 	{
-		int op;
-		op = rand() % 2;
-		if (op)
-			ope.push_back('+');
-		else
-			ope.push_back('-');
-	}
-	if (kuo == 0 || b[kuo - 1] == '-')
-		flag = 1;
-	for (int i = kuo; i < cnt - 1; i++)
-	{
-		if (i < kuo || i >= kuo + 3 || !flag)
-			c[i] = ope[i];
-		else if (flag)
-		{
-			if (ope[i] == '-')
-				c[i] = '+';
-			else
-				c[i] = '-';
-		}
+		int randnum = rand() % 101; //��Χ��[0,100]
+		int b = randnum / 100;
+		a.push_back(b);
 	}
 }
+
 bool Level1::checkAns(string ans)
 {
-	int Ansinput = 0;
-	for (int i = 0; i < ans.length())
-	{
-		Ansinput *= 10;
-		Ansinput += ans[i] - '0';
-	}
-	return Ansinput == ans;
+	CalcExpression* c=CalcExpression::getInstance();
+	string s = this->getPro();
+	double a = stod(ans);
+	if (a == c->calc(s))
+		return true;
+	else
+		return false;
 }
+
 string Level1::getPro()
 {
-	int cnta = a.size();   //数字个数
-	int cnto = ope.size(); //操作符个数
-	int x = 0;			   //当前数字数组位置
-	int y = 0;			   //当前符号数组位置
+	int cnta = a.size();   //���ָ���
+	int cnto = ope.size(); //����������
+	int x = 0;			   //��ǰ��������λ��
+	int y = 0;			   //��ǰ��������λ��
 	string Pro = "";
 	while (x < cnta || y < cnto)
 	{

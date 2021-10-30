@@ -3,7 +3,7 @@ Server::Server()
 }
 void Server::setGrade(int newGrade)
 {
-	this.grade = newGrade;
+	this->grade = newGrade;
 	getProblemInstance();
 }
 bool Server::check(string ans) //�жϴ��Ƿ���ȷ
