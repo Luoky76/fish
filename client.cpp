@@ -1,7 +1,6 @@
 void Client::getGradeFromKeyboard()
 {
     string NJ;
-    int level;
     cout << "请输入你的年级？" << endl;
     std::cin >> NJ;
     if (NJ == "一年级" || NJ == "二年级")
@@ -18,7 +17,9 @@ void Client::getGradeFromKeyboard()
     }
     server.setGrade(level);
 }
-
+void Client::initProblem(){
+    server.getProblemInstance();
+}
 void Client::printProblem()
 {
     std::cout << server.getProblem() << "=?" << std::endl;
@@ -64,6 +65,7 @@ void Client::start()
 
     for (i = 0; i < proCnt; i++)
     {
+        initProblem();
         printProblem();
         if (!server.check(getAnsFromKeyboard()))
         {

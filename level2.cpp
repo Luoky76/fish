@@ -11,9 +11,7 @@ Level2::Level2()
 
 	for (int i = 0; i < geshu; i++)
 	{
-		int randnum = rand() % 1000001; //��Χ��[0,10000]
-		int b = randnum / 100;
-		a.push_back(b);
+		a.push_back(rand() % 10001);
 	}
 }
 

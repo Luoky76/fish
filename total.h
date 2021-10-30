@@ -95,11 +95,10 @@ public:
 	void setGrade(int newGrade);
 	bool check(string ans); //�жϴ��Ƿ���ȷ
 	string getProblem();	//��������� getPro
-
+	void getProblemInstance(); //����getInstance ������grade�� ��ȡproblemʵ��
 private:
 	int grade;
 	Problem *problem;
-	void getProblemInstance(); //����getInstance ������grade�� ��ȡproblemʵ��
 };
 
 class Client //ר������̴򽻵�
@@ -107,6 +106,7 @@ class Client //ר������̴򽻵�
 public:
 	Client();
 	void getGradeFromKeyboard(); //�Ӽ��̶����꼶 ��������ķ��룩 �󴫸�Server
+	void initProblem();
 	void printProblem();		 //����Ļ�ϴ�ӡ��Ŀ
 	string getAnsFromKeyboard(); //�Ӽ��̶�ȡ��
 	int getProCntFromKeyboard(); //��ȡ��Ŀ����
@@ -114,6 +114,7 @@ public:
 	void start();
 
 private:
+	int level;
 	int proCnt;	  //��Ŀ����
 	int wrongCnt; //������Ŀ��
 	Server server;
