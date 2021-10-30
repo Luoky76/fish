@@ -31,7 +31,7 @@
        ss << a[i];                           
        ss >>  abc;
         bd += abc;                          //字符串拼接   
-        bd += " "; 
+         
        if(i==geshu-1)
        { continue;
        }
@@ -39,12 +39,13 @@
        {                                 
 	      
         bd += ope[k];                       //操作数的拼接 
-        bd += " ";
+       
         k++;
        }
    }
-    bd += "= ?";
+    
 
    cout<<bd<<endl;                          
+                    
 
  }
