@@ -43,7 +43,7 @@ class Problem
 	static Problem* getInstance(int level);	//随根据年级随机生成题目实例
 	virtual bool checkAns(string ans) = 0;	//每个题目自行判断答案是否正确
 	void setLim(int low,int high);	//设置生成的数的上下界
-	string getPro();	//获取用string表示的题目
+	virtual string getPro() = 0;	//获取用string表示的题目
 
 	protected:
 	int maxNum;
@@ -55,6 +55,7 @@ class Level1 :public Problem
 	public:
 	Level1();	//构造函数内直接随机生成题目 注意设置上下界
 	bool checkAns(string ans);
+	string getPro();
 
 	private:
 	vector <int> a;	//运算数
@@ -67,6 +68,7 @@ class Level2 :public Problem
 	public:
 	Level2();	//构造函数内直接随机生成题目  注意设置上下界
 	bool checkAns(string ans);
+	string getPro();
 
 	private:
 	vector <int> a;	//运算数
@@ -79,6 +81,7 @@ class Level3 :public Problem
 	public:
 	Level3();	//构造函数内直接随机生成题目  注意设置上下界
 	bool checkAns(string ans);
+	string getPro();
 
 	private:
 	vector <double> a;	//运算数 含小数
