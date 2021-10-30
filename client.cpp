@@ -1,13 +1,13 @@
 void Client::getGradeFromKeyboard(){
     string NJ;
     int level;
-    cout<<"ÇëÊäÈëÄãµÄÄê¼¶£¿"<<endl;
+    cout<<"è¯·è¾“å…¥ä½ çš„å¹´çº§ï¼Ÿ"<<endl;
     std::cin>>NJ;
-    if(NJ == "Ò»Äê¼¶" || NJ == "¶þÄê¼¶") {
+    if(NJ == "ä¸€å¹´çº§" || NJ == "äºŒå¹´çº§") {
         level=1;
-    } else if(NJ == "ÈýÄê¼¶" || NJ == "ËÄÄê¼¶") {
+    } else if(NJ == "ä¸‰å¹´çº§" || NJ == "å››å¹´çº§") {
         level=2;
-    } else if(NJ == "ÎåÄê¼¶" || NJ == "ÁùÄê¼¶") {
+    } else if(NJ == "äº”å¹´çº§" || NJ == "å…­å¹´çº§") {
         level=3;
     }
     server.setGrade(level);
@@ -24,15 +24,15 @@ string Client::getAnsFormKeyboard() {
 }
 
 int Client::getProCntFromKeyboard() {
-	std::cout<<"ÇëÊäÈëÌâÄ¿Êý£¿"<<std::endl;
+	std::cout<<"è¯·è¾“å…¥é¢˜ç›®æ•°ï¼Ÿ"<<std::endl;
     std::cin>>proCnt;
 }
 
 void Client::printEndofPro(){
     if (wrongCnt==0) {
-        std::cout<<"½áÊø£¡È«²¿ÕýÈ·£¬Ì«°ôÁË£¡"<<std::endl;
+        std::cout<<"ç»“æŸï¼å…¨éƒ¨æ­£ç¡®ï¼Œå¤ªæ£’äº†ï¼"<<std::endl;
     } else {
-        std::cout<<"½áÊø£¡´íÁË"<<wrongCnt<<"ÌâÅ¶"<<std::endl;
+        std::cout<<"ç»“æŸï¼é”™äº†"<<wrongCnt<<"é¢˜å“¦"<<std::endl;
     }
 }
 
