@@ -1,43 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+
+
 class CalcExpression
 {
 	public:
-	static CalcExpression* getInstance();	//Ê¹ÓÃ´Ëº¯ÊıÀ´»ñÈ¡±¾ÀàµÄÎ¨Ò»ÊµÀı 
+	static CalcExpression* getInstance();	//Ê¹ï¿½Ã´Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Î¨Ò»Êµï¿½ï¿½ 
 	double calc(string expression);
 	int calcOnlyInt(string expression);
 
 	private:
-	CalcExpression* instance;	//´¢´æ±¾ÀàµÄÎ¨Ò»ÊµÀı£¬µ±ÊµÀıÉĞ²»´æÔÚÊ±Ó¦¸³Îªnullptr
-	CalcExpression();	//¹¹Ôìº¯ÊıË½ÓĞ»¯£¬²»ÔÊĞíÍâ²¿×ÔĞĞÊµÀı»¯±¾Àà 
+	CalcExpression* instance;	//ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½Î¨Ò»Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ó¦ï¿½ï¿½Îªnullptr
+	CalcExpression();	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½Ë½ï¿½Ğ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
-	struct stack_data	// ¶¨ÒåÕ»Êı¾İ½á¹¹Ìå
+	struct stack_data	// ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½İ½á¹¹ï¿½ï¿½
 	{
     	char Operator;
     	double Number;
 	};
-	bool isOperator(char ch);	// ¼ÆËã·ûºÅÅĞ¶¨
-	bool isNumber(char ch);	//Êı×ÖÅĞ¶¨
-	int priority(char a);	//ÓÅÏÈ¼¶ÅĞ¶¨
-	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//»ñÈ¡Êı×ÖÕ»¶¥Ë«Êı
-	double postfixCalculate(vector<stack_data>& postfix);	//¼ÆËãºó×º±í´ïÊ½
-	vector<stack_data> getSeparate(string& infix);	//×ö·Ö¸î
-	string printSeparate(vector<stack_data>& temp);	//±í´ïÊ½Êä³ö
-	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//ºó×º±í´ïÊ½×ª»»
+	bool isOperator(char ch);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½
+	bool isNumber(char ch);	//ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½
+	int priority(char a);	//ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ğ¶ï¿½
+	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ë«ï¿½ï¿½
+	double postfixCalculate(vector<stack_data>& postfix);	//ï¿½ï¿½ï¿½ï¿½ï¿½×ºï¿½ï¿½ï¿½ï¿½Ê½
+	vector<stack_data> getSeparate(string& infix);	//ï¿½ï¿½ï¿½Ö¸ï¿½
+	string printSeparate(vector<stack_data>& temp);	//ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½
+	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//ï¿½ï¿½×ºï¿½ï¿½ï¿½ï¿½Ê½×ªï¿½ï¿½
 };
 
 class Problem
 {
 	public:
-	const static int lev1 = 1;	//¶ÔÓ¦Level1
-	const static int lev2 = 2;	//¶ÔÓ¦Level2
-	const static int lev3 = 3;	//¶ÔÓ¦Level3
+	const static int lev1 = 1;	//ï¿½ï¿½Ó¦Level1
+	const static int lev2 = 2;	//ï¿½ï¿½Ó¦Level2
+	const static int lev3 = 3;	//ï¿½ï¿½Ó¦Level3
 
-	static Problem* getInstance(int level);	//Ëæ¸ù¾İÄê¼¶Ëæ»úÉú³ÉÌâÄ¿ÊµÀı
+	static Problem* getInstance(int level);	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¼¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Êµï¿½ï¿½
 	int getAns();
-	bool checkAns(string ans);	//Ã¿¸öÌâÄ¿×ÔĞĞÅĞ¶Ï´ğ°¸ÊÇ·ñÕıÈ·
-	void setLim(int low,int high);	//ÉèÖÃÉú³ÉµÄÊıµÄÉÏÏÂ½ç
-	string getPro();	//»ñÈ¡ÓÃstring±íÊ¾µÄÌâÄ¿
+	bool checkAns(string ans);	//Ã¿ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶Ï´ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·
+	void setLim(int low,int high);	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
+	string getPro();	//ï¿½ï¿½È¡ï¿½ï¿½stringï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ä¿
 
 	protected:
 	int maxNum;
@@ -47,34 +50,34 @@ class Problem
 class Level1 :public Problem
 {
 	public:
-	Level1();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿ ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	Level1();	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
 
 	private:
-	vector <int> a;	//ÔËËãÊı
-	vector <char> ope;	//ÔËËã·û Ö»º¬¼Ó¼õ·¨
+	vector <int> a;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	vector <char> ope;	//ï¿½ï¿½ï¿½ï¿½ï¿½ Ö»ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½
 	int ans;
 };
 
 class Level2 :public Problem
 {
 	public:
-	Level2();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿  ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	Level2();	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿  ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
 
 	private:
-	vector <int> a;	//ÔËËãÊı
-	vector <char> ope;	//ÔËËã·û º¬¼Ó¼õ³Ë³ı
+	vector <int> a;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	vector <char> ope;	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½Ë³ï¿½
 	int ans;
 };
 
 class Level3 :public Problem
 {
 	public:
-	Level3();	//¹¹Ôìº¯ÊıÄÚÖ±½ÓËæ»úÉú³ÉÌâÄ¿  ×¢ÒâÉèÖÃÉÏÏÂ½ç
+	Level3();	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿  ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½
 
 	private:
-	vector <double> a;	//ÔËËãÊı º¬Ğ¡Êı
-	vector <bool> isInteger;	//ÊÇ·ñÎªÕûÊı
-	vector <char> ope;	//ÔËËã·û º¬¼Ó¼õ³Ë³ı
+	vector <double> a;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¡ï¿½ï¿½
+	vector <bool> isInteger;	//ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½
+	vector <char> ope;	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½Ë³ï¿½
 	double ans;
 };
 
@@ -84,35 +87,35 @@ class Server
 	Server();
 	~Server();
 	void setGrade(int newGrade);
-	bool check(string ans);	//ÅĞ¶Ï´ğ°¸ÊÇ·ñÕıÈ·
-	string getProblem();	//µ÷ÓÃÎÊÌâµÄ getPro
+	bool check(string ans);	//ï¿½Ğ¶Ï´ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·
+	string getProblem();	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getPro
 
 	private:
 	int grade;
 	Problem* problem;
-	void getProblemInstance();	//µ÷ÓÃgetInstance £¨´«Èëgrade£© »ñÈ¡problemÊµÀı
+	void getProblemInstance();	//ï¿½ï¿½ï¿½ï¿½getInstance ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gradeï¿½ï¿½ ï¿½ï¿½È¡problemÊµï¿½ï¿½
 };
 
-class Client	//×¨ÃÅÓë¼üÅÌ´ò½»µÀ
+class Client	//×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ò½»µï¿½
 {
 	public:
 	Client();
-	void getGradeFromKeyboard();	//´Ó¼üÅÌ¶ÁÈëÄê¼¶ £¨Íê³ÉÖĞÎÄ·­Òë£© ºó´«¸øServer
-	void printProblem();	//ÔÚÆÁÄ»ÉÏ´òÓ¡ÌâÄ¿
-	string getAnsFormKeyboard();	//´Ó¼üÅÌ¶ÁÈ¡´ğ°¸
-	int getProCntFormKeyboard();	//»ñÈ¡ÌâÄ¿ÊıÁ¿
-	void printEndofPro();	//´òÓ¡ÌâÄ¿½áÊøµÄÌáÊ¾£¨È«²¿ÕıÈ·/ÓĞ¶àÉÙ´íÎó£©
+	void getGradeFromKeyboard();	//ï¿½Ó¼ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ê¼¶ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ë£© ï¿½ó´«¸ï¿½Server
+	void printProblem();	//ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Ï´ï¿½Ó¡ï¿½ï¿½Ä¿
+	string getAnsFormKeyboard();	//ï¿½Ó¼ï¿½ï¿½Ì¶ï¿½È¡ï¿½ï¿½
+	int getProCntFromKeyboard();	//ï¿½ï¿½È¡ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+	void printEndofPro();	//ï¿½ï¿½Ó¡ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½È·/ï¿½Ğ¶ï¿½ï¿½Ù´ï¿½ï¿½ï¿½
 	void start();
 
 	private:
-	int proCnt;	//ÌâÄ¿×ÜÊı
-	int correctFormKeyboarCnt;	//´íÎóÌâÄ¿Êı
+	int proCnt;	//ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
+	int correctFormKeyboarCnt;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½
 	Server server;
 };
 
 int main()
 {
-    Client client;//ÊµÀı»¯client
-    client->start();
+    Client client;//Êµï¿½ï¿½ï¿½ï¿½client
+    client.start();
     return 0;
 }
