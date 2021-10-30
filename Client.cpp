@@ -16,7 +16,7 @@ void Client::getGradeFromKeyboard(){
 }
 
 void Client::printProblem() {
-    std::cout<<server.getproblem()<<std::endl;
+    std::cout<<server.getproblem()<<"=?"<<std::endl;
 }
 
 string Client::getAnsFormKeyboard() {
