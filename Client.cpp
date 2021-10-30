@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 
-
 void Client::getGradeFromKeyboard(){
     string NJ;
     int level;
