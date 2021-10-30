@@ -3,43 +3,44 @@
 void Client::getGradeFromKeyboard(){
     string NJ;
     int level;
+    cout<<"ÇëÊäÈëÄãµÄÄê¼¶£¿"<<endl;
     std::cin>>NJ;
-    if(strcmp(NJ,"ä¸€å¹´çº§")==0 || strcmp(NJ,"äºŒå¹´çº§")==0){
+    if(NJ == "Ò»Äê¼¶" || NJ == "¶þÄê¼¶") {
         level=1;
-    } else if(strcmp(NJ,"ä¸‰å¹´çº§")==0 || strcmp(NJ,"å››å¹´çº§")==0){
+    } else if(NJ == "ÈýÄê¼¶" || NJ == "ËÄÄê¼¶") {
         level=2;
-    } else if(strcmp(NJ,"äº”å¹´çº§")==0 || strcmp(NJ,"å…­å¹´çº§")==0){
+    } else if(NJ == "ÎåÄê¼¶" || NJ == "ÁùÄê¼¶") {
         level=3;
     }
-    server->setGrade(int level);
+    server.setGrade(level);
 }
 
-void Client::printProblem(){
-    std::cout<<server->getproblem();
+void Client::printProblem() {
+    std::cout<<server.getproblem()<<"=?"<<std::endl;
 }
 
-string Client::getAnsFormKeyboard(){
+string Client::getAnsFormKeyboard() {
     string ans;
     std::cin>>ans;
     return ans;
 }
 
-int Client::getProCntFromKeyboard(){
+int Client::getProCntFromKeyboard() {
+	std::cout<<"ÇëÊäÈëÌâÄ¿Êý£¿"<<std::endl;
     std::cin>>proCnt;
 }
 
 void Client::printEndofPro(){
-    if(correctFormKeyboarCnt==0){
-        std::cout<<"å…¨éƒ¨æ­£ç¡®";
+    if (wrongCnt==0) {
+        std::cout<<"½áÊø£¡È«²¿ÕýÈ·£¬Ì«°ôÁË£¡"<<std::endl;
     } else {
-        std::cout<<"æœ‰"<<correctFormKeyboarCnt<<"é¢˜é”™è¯¯"<<endl;
+        std::cout<<"½áÊø£¡´íÁË"<<wrongCnt<<"ÌâÅ¶"<<std::endl;
     }
-    
 }
 
 Client::Client(){
     int proCnt=0;
-    int correctFormKeyboarCnt=0;
+    int wrongCnt=0;
 }
 
 void Client::start(){
@@ -49,8 +50,8 @@ void Client::start(){
     
     for(i=0;i<proCnt;i++){
         printProblem();
-        if(!server->check(getAnsFormKeyboard())){
-            correctFormKeyboarCnt++;
+        if(!server.check(getAnsFormKeyboard())){
+            wrongCnt++;
         }
     }
     printEndofPro();
