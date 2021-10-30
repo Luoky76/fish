@@ -1,10 +1,5 @@
-#include <string>
-#include <stack>
-#include <iostream>
-#include <vector>
 #include <exception>
 #include <iomanip>
-using namespace std;
 
 // ����ջ���ݽṹ��
 struct stack_data {

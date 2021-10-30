@@ -11,3 +11,8 @@ Problem* Problem::getInstance(int level)
 	}
 	return Pro;
 }	 
+
+string Problem::getPro()
+{
+	//DO SOMETHING
+}

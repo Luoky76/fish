@@ -24,36 +24,6 @@ Level1:: Level1(){
 			else c[i]='-';
 		}
 	}
-	for(int i=1;i<=cnt;i++){
-		if(i == 1){
-			ans = a[i];
-			coutinue;
-		}
-		else{
-			if(c[i-1] == '+') ans += a[i];
-			else ans -= a[i];
-		}
-	}
-} 
-string Level1::getpro(){
-	string output;
-	int cnt = 0;
-	int cntstr = 0;
-	for(int i=0;i<a.size();i++){
-		int Num[5];
-		int cntNum = 0;
-		while(a[i]>0){
-			Num[cntNum++]=a[i]%10;
-			a[i]%=10;
-		}
-		for(int j=4;j>=0;j--){
-			if(Num[j] == 0)continue;
-			output[cntstr++]='0'+Num[j];
-		}
-		if(j==kuo+3)output[cntstr++]=')';
-		if(ope[j]!='/0')output[cntstr++]=ope[i];
-		if(j==kuo)output[cntstr++]='(';
-	}
 } 
 bool Level1::checkAns(string ans){
 	int Ansinput = 0;
