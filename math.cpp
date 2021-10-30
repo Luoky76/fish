@@ -57,12 +57,13 @@ class Server
 	public:
 	Server();
 	void setGrade(int newGrade);
+	bool check(string ans);	//判断答案是否正确
+	string getProblem();	//调用问题的 getPro
 	
 	private:
 	int grade;
 	Problem* problem;
-	bool check(string ans);	//判断答案是否正确
-	void getProblem();	//调用getInstance （传入grade） 获取problem实例 
+	void getProblemInstance();	//调用getInstance （传入grade） 获取problem实例 
 }
 
 class Client	//专门与键盘打交道 
