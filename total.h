@@ -6,116 +6,116 @@ using namespace std;
 
 class CalcExpression
 {
-	public:
-	static CalcExpression* getInstance();	//ʹ�ô˺�������ȡ�����Ψһʵ�� 
+public:
+	static CalcExpression *getInstance(); //ʹ�ô˺�������ȡ�����Ψһʵ��
 	double calc(string expression);
 	int calcOnlyInt(string expression);
 
-	private:
-	static CalcExpression* instance;	//���汾���Ψһʵ������ʵ���в�����ʱӦ��Ϊnullptr
-	CalcExpression();	//���캯��˽�л����������ⲿ����ʵ�������� 
+private:
+	static CalcExpression *instance; //���汾���Ψһʵ������ʵ���в�����ʱӦ��Ϊnullptr
+	CalcExpression();				 //���캯��˽�л����������ⲿ����ʵ��������
 
-	struct stack_data	// ����ջ���ݽṹ��
+	struct stack_data // ����ջ���ݽṹ��
 	{
-    	char Operator;
-    	double Number;
+		char Operator;
+		double Number;
 	};
-	bool isOperator(char ch);	// ��������ж�
-	bool isNumber(char ch);	//�����ж�
-	int priority(char a);	//���ȼ��ж�
-	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//��ȡ����ջ��˫��
-	double postfixCalculate(vector<stack_data>& postfix);	//�����׺����ʽ
-	vector<stack_data> getSeparate(string& infix);	//���ָ�
-	string printSeparate(vector<stack_data>& temp);	//����ʽ���
-	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//��׺����ʽת��
+	bool isOperator(char ch);												  // ��������ж�
+	bool isNumber(char ch);													  //�����ж�
+	int priority(char a);													  //���ȼ��ж�
+	void getTwoNums(stack<double> &num_stack, double &first, double &second); //��ȡ����ջ��˫��
+	double postfixCalculate(vector<stack_data> &postfix);					  //�����׺����ʽ
+	vector<stack_data> getSeparate(string &infix);							  //���ָ�
+	string printSeparate(vector<stack_data> &temp);							  //����ʽ���
+	vector<stack_data> getPostfixExp(vector<stack_data> &infix);			  //��׺����ʽת��
 };
 
 class Problem
 {
-	public:
-	const static int lev1 = 1;	//��ӦLevel1
-	const static int lev2 = 2;	//��ӦLevel2
-	const static int lev3 = 3;	//��ӦLevel3
+public:
+	const static int lev1 = 1; //��ӦLevel1
+	const static int lev2 = 2; //��ӦLevel2
+	const static int lev3 = 3; //��ӦLevel3
 
-	static Problem* getInstance(int level);	//������꼶���������Ŀʵ��
+	static Problem *getInstance(int level); //������꼶���������Ŀʵ��
 	virtual bool checkAns(string ans) = 0;	//ÿ����Ŀ�����жϴ��Ƿ���ȷ
-	void setLim(int low,int high);	//�������ɵ��������½�
-	virtual string getPro() = 0;	//��ȡ��string��ʾ����Ŀ
+	void setLim(int low, int high);			//�������ɵ��������½�
+	virtual string getPro() = 0;			//��ȡ��string��ʾ����Ŀ
 
-	protected:
+protected:
 	int maxNum;
 	int minNum;
 };
 
-class Level1 :public Problem
+class Level1 : public Problem
 {
-	public:
-	Level1();	//���캯����ֱ�����������Ŀ ע���������½�
+public:
+	Level1(); //���캯����ֱ�����������Ŀ ע���������½�
 	bool checkAns(string ans);
 	string getPro();
 
-	private:
-	vector <int> a;	//������
-	vector <char> ope;	//����� ֻ���Ӽ���
+private:
+	vector<int> a;	  //������
+	vector<char> ope; //����� ֻ���Ӽ���
 	int ans;
 };
 
-class Level2 :public Problem
+class Level2 : public Problem
 {
-	public:
-	Level2();	//���캯����ֱ�����������Ŀ  ע���������½�
+public:
+	Level2(); //���캯����ֱ�����������Ŀ  ע���������½�
 	bool checkAns(string ans);
 	string getPro();
 
-	private:
-	vector <int> a;	//������
-	vector <char> ope;	//����� ���Ӽ��˳�
+private:
+	vector<int> a;	  //������
+	vector<char> ope; //����� ���Ӽ��˳�
 	int ans;
 };
 
-class Level3 :public Problem
+class Level3 : public Problem
 {
-	public:
-	Level3();	//���캯����ֱ�����������Ŀ  ע���������½�
+public:
+	Level3(); //���캯����ֱ�����������Ŀ  ע���������½�
 	bool checkAns(string ans);
 	string getPro();
 
-	private:
-	vector <double> a;	//������ ��С��
-	vector <bool> isInteger;	//�Ƿ�Ϊ����
-	vector <char> ope;	//����� ���Ӽ��˳�
+private:
+	vector<double> a;		//������ ��С��
+	vector<bool> isInteger; //�Ƿ�Ϊ����
+	vector<char> ope;		//����� ���Ӽ��˳�
 	double ans;
 };
 
 class Server
 {
-	public:
+public:
 	Server();
 	~Server();
 	void setGrade(int newGrade);
-	bool check(string ans);	//�жϴ��Ƿ���ȷ
+	bool check(string ans); //�жϴ��Ƿ���ȷ
 	string getProblem();	//��������� getPro
 
-	private:
+private:
 	int grade;
-	Problem* problem;
-	void getProblemInstance();	//����getInstance ������grade�� ��ȡproblemʵ��
+	Problem *problem;
+	void getProblemInstance(); //����getInstance ������grade�� ��ȡproblemʵ��
 };
 
-class Client	//ר������̴򽻵�
+class Client //ר������̴򽻵�
 {
-	public:
+public:
 	Client();
-	void getGradeFromKeyboard();	//�Ӽ��̶����꼶 ��������ķ��룩 �󴫸�Server
-	void printProblem();	//����Ļ�ϴ�ӡ��Ŀ
-	string getAnsFromKeyboard();	//�Ӽ��̶�ȡ��
-	int getProCntFromKeyboard();	//��ȡ��Ŀ����
-	void printEndofPro();	//��ӡ��Ŀ��������ʾ��ȫ����ȷ/�ж��ٴ���
+	void getGradeFromKeyboard(); //�Ӽ��̶����꼶 ��������ķ��룩 �󴫸�Server
+	void printProblem();		 //����Ļ�ϴ�ӡ��Ŀ
+	string getAnsFromKeyboard(); //�Ӽ��̶�ȡ��
+	int getProCntFromKeyboard(); //��ȡ��Ŀ����
+	void printEndofPro();		 //��ӡ��Ŀ��������ʾ��ȫ����ȷ/�ж��ٴ���
 	void start();
 
-	private:
-	int proCnt;	//��Ŀ����
-	int correctFormKeyboarCnt;	//������Ŀ��
+private:
+	int proCnt;	  //��Ŀ����
+	int wrongCnt; //������Ŀ��
 	Server server;
 };
 

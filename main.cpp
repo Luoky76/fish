@@ -1,4 +1,4 @@
-#include"total.h"
+#include "total.h"
 
 int main()
 {
