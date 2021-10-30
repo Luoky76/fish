@@ -1,4 +1,4 @@
- Level3::Level3(){ 
+Level2::Level2(){ 
    srand(time(0)); 
    int geshu=(rand()%3)+2;               //生成N的个数 (2-4)
    char symbol[4]={'+','-','*','/'};  
@@ -10,18 +10,9 @@
    
    for(int i=0;i<geshu;i++)
    { 
-   int randnum=rand()%1000001;   //范围在[0,10000] 
-   int num=rand()%2;       //判断a的随机数是整数还是小数
-   if(num==0)              //整数
-   { 
-    int b=randnum/100;
+    int randnum=rand()%1000001;   //范围在[0,10000] 
+	int b=randnum/100;
     a.push_back(b); 
-   }
-   else                    //小数
-   {
-    double randnum1=randnum/100.00;
-    a.push_back(randnum1);
-   }
    }
      int k=0;
    string bd;                               //算式生成
@@ -48,7 +39,8 @@
    cout<<bd<<endl;                          
 
  }
- bool Level3::checkAns(string ans)
+ 
+ bool Level2::checkAns(string ans)
  {
  	CalcExpression c;
 	string s = this->getPro();
