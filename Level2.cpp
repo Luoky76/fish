@@ -1,14 +1,15 @@
 #include "math.cpp"
 
-Level3::Level3()
+Level2::Level2()
 {
     char opt[4] = {'+', '-', '*', '//'};
     srand(time(0));
-    int x = rand();
+    int x = rand() % 9 + 2;
     while (x--)
     {
-        a.push_back((rand()%1000001) / (100.0));
+        a.push_back(rand()%10001);
         if (!x)
             ope.push_back(opt[rand() % 4]);
     }
+    
 }
