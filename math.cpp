@@ -34,10 +34,9 @@ class Problem
 	const static int lev3 = 3;	//对应Level3
 
 	static Problem* getInstance(int level);	//随根据年级随机生成题目实例
-	int getAns();
-	bool checkAns(string ans);	//每个题目自行判断答案是否正确
+	virtual bool checkAns(string ans) = 0;	//每个题目自行判断答案是否正确
 	void setLim(int low,int high);	//设置生成的数的上下界
-	string getPro();	//获取用string表示的题目
+	virtual string getPro() = 0;	//获取用string表示的题目
 
 	protected:
 	int maxNum;
@@ -112,7 +111,7 @@ class Client	//专门与键盘打交道
 
 int main()
 {
-    Client client;//实例化client
+    Client client;	//实例化client
     client.start();
     return 0;
 }
