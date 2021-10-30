@@ -4,7 +4,7 @@ class CalcExpression
 {
 	public:
 	static double calc(string expression);
-	static int calc(string expression);
+	static int calcOnlyInt(string expression);
 }
 
 class Problem
