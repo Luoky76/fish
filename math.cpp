@@ -1,5 +1,12 @@
 #include <bits/stdc++.h>
 
+class CalcExpression
+{
+	public:
+	static double calc(string expression);
+	static int calc(string expression);
+}
+
 class Problem
 {
 	public:
