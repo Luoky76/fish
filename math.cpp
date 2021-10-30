@@ -113,6 +113,6 @@ class Client	//专门与键盘打交道
 int main()
 {
     Client client;//实例化client
-    client->start();
+    client.start();
     return 0;
 }
