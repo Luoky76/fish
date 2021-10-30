@@ -35,9 +35,9 @@ class Problem
 
 	static Problem* getInstance(int level);	//随根据年级随机生成题目实例
 	int getAns();
-	bool checkAns(string ans);	//每个题目自行判断答案是否正确
+	virtual bool checkAns(string ans);	//每个题目自行判断答案是否正确
 	void setLim(int low,int high);	//设置生成的数的上下界
-	string getPro();	//获取用string表示的题目
+	virtual string getPro();	//获取用string表示的题目
 
 	protected:
 	int maxNum;
