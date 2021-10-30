@@ -3,8 +3,27 @@
 class CalcExpression
 {
 	public:
-	static double calc(string expression);
-	static int calcOnlyInt(string expression);
+	static CalcExpression* getInstance();	//使用此函数来获取本类的唯一实例 
+	double calc(string expression);
+	int calcOnlyInt(string expression);
+
+	private:
+	CalcExpression* instance;	//储存本类的唯一实例，当实例尚不存在时应赋为nullptr
+	CalcExpression();	//构造函数私有化，不允许外部自行实例化本类 
+
+	struct stack_data	// 定义栈数据结构体
+	{
+    	char Operator;
+    	double Number;
+	};
+	bool isOperator(char ch);	// 计算符号判定
+	bool isNumber(char ch);	//数字判定
+	int priority(char a);	//优先级判定
+	void getTwoNums(stack<double>& num_stack, double& first, double& second);	//获取数字栈顶双数
+	double postfixCalculate(vector<stack_data>& postfix);	//计算后缀表达式
+	vector<stack_data> getSeparate(string& infix);	//做分割
+	string printSeparate(vector<stack_data>& temp);	//表达式输出
+	vector<stack_data> getPostfixExp(vector<stack_data>& infix);	//后缀表达式转换
 }
 
 class Problem
@@ -63,6 +82,7 @@ class Server
 {
 	public:
 	Server();
+	~Server();
 	void setGrade(int newGrade);
 	bool check(string ans);	//判断答案是否正确
 	string getProblem();	//调用问题的 getPro
