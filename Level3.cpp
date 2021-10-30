@@ -23,3 +23,26 @@ Level3::Level3()
             ope.push_back(opt[rand() % 4]);
     }
 }
+string Level3::getPro(){ 
+   int k=0;
+   string bd;                               //算式生成
+   for(int i=0;i<geshu;i++)
+   {   string abc;                        
+       stringstream ss;                     //数字转换字符串 
+       ss << a[i];                           
+       ss >>  abc;
+        bd += abc;                          //字符串拼接   
+        bd += " "; 
+       if(i==geshu-1)
+       { continue;
+       }
+       else
+       {                                 
+	      
+        bd += ope[k];                       //操作数的拼接 
+        bd += " ";
+        k++;
+       }
+  }
+  return bd;                       
+ }
