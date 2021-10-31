@@ -3,11 +3,38 @@ Level3::Level3()
 	srand(time(0));
 	int geshu = (rand() % 3) + 2; //生成N的个数 (2-4)
 	char symbol[4] = {'+', '-', '*', '/'};
-	for (int i = 0; i < geshu - 1; i++)
+
+	int khflag = 0;
+	for (int i = 0; i < geshu - 1;)
 	{
-		//符号的随机生成
-		int openum = rand() % 4;
-		ope.push_back(symbol[openum]);
+		if (rand() % 5)
+		{
+			if (ope.size() > 0 && ope[ope.size() - 1] == ')')
+			{
+				int openum = rand() % 4;
+				ope.push_back(symbol[openum]);
+				i++;
+			}
+			ope.push_back('(');
+			khflag++;
+		}
+		if (i < geshu - 1)
+		{
+			int openum = rand() % 4;
+			ope.push_back(symbol[openum]);
+			i++;
+		}
+		if (khflag && rand() % 5)
+		{
+			ope.push_back(')');
+			khflag--;
+		}
+
+		while (khflag && i >= geshu - 1)
+		{
+			ope.push_back(')');
+			khflag--;
+		}
 	}
 
 	for (int i = 0; i < geshu; i++)
@@ -33,41 +60,54 @@ bool Level3::checkAns(string ans)
 	string s = this->getPro();
 	double a = stod(ans);
 	if (a == c->calc(s))
+	{
 		return true;
+	}
 	else
+	{
 		return false;
+	}
 }
 
 string Level3::getPro()
 {
-	int cnta = a.size();   //数字个数
-	int cnto = ope.size(); //操作符个数
-	int x = 0;			   //当前数字数组位置
-	int y = 0;			   //当前符号数组位置
+	int cnta = a.size();   //���ָ���
+	int cnto = ope.size(); //����������
+	int x = 0;			   //��ǰ��������λ��
+	int y = 0;			   //��ǰ��������λ��
 	string Pro = "";
+	int khflag = 0;
 	while (x < cnta || y < cnto)
 	{
-		while (ope[y] == '(' && y < cnto)
-		{
-			Pro = Pro + "(";
-			y++;
-		}
 		if (x < cnta)
 		{
+			while (ope[y] == '(' && y < cnto)
+			{
+				Pro = Pro + "(";
+				khflag++;
+				y++;
+			}
 			stringstream temp;
 			temp << a[x++];
 			string tempp;
 			temp >> tempp;
 			Pro = Pro + tempp;
-		}
-		while (ope[y] == ')' && y < cnto)
-		{
-			Pro = Pro + ")";
-			y++;
+			while (ope[y] == ')' && y < cnto)
+			{
+				Pro = Pro + ")";
+				khflag--;
+				y++;
+			}
 		}
 		if (y < cnto)
 		{
 			Pro = Pro + ope[y++];
+		}
+		while (x == a.size() && khflag != 0 && ope[y] == ')' && y < cnto)
+		{
+			Pro = Pro + ")";
+			khflag--;
+			y++;
 		}
 	}
 	return Pro;

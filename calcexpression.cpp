@@ -98,6 +98,8 @@ vector<stack_data> CalcExpression::getSeparate(string &infix)
             str_num = "";
             postfix.emplace_back(stack_data{p, 0});
         }
+        if (p == '=')
+            break;
     }
     if (!str_num.empty())
         postfix.emplace_back(stack_data{' ', stod(str_num)});
@@ -183,6 +185,10 @@ double CalcExpression::calc(string expression)
     vector<stack_data> postfix = getSeparate(expression);
     vector<stack_data> postfixExp = getPostfixExp(postfix);
     double result = postfixCalculate(postfixExp);
+    if (result > 0)
+        result = ((int)(result * 100 + 0.5)) / 100.0;
+    else
+        result = ((int)(result * 100 - 0.5)) / 100.0;
     return result;
 }
 
@@ -191,6 +197,10 @@ int CalcExpression ::calcOnlyInt(string expression)
     vector<stack_data> postfix = getSeparate(expression);
     vector<stack_data> postfixExp = getPostfixExp(postfix);
     double result = postfixCalculate(postfixExp);
+    if (result > 0)
+        result = ((int)(result * 100 + 0.5)) / 100.0;
+    else
+        result = ((int)(result * 100 - 0.5)) / 100.0;
     return (int)result;
 }
 CalcExpression *CalcExpression ::getInstance()
